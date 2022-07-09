@@ -1,5 +1,6 @@
 <?php
-include 'config.php';
+//include 'config.php';
+include 'config-locale.php';
 include 'headers.php';
 require "verif_auth.php";
 
@@ -62,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     //exit;
     // si la catégorie existe ou si l'id_categories est à 0, on ajoute le produit
     if($result->num_rows > 0 OR $objectPOST->id_categories == 0):
-        $sql = sprintf("INSERT INTO produits SET label='%s', prix='%s, id_categories=%s'",
+        $sql = sprintf("INSERT INTO produits SET label='%s', prix=%d, id_categories='%s'",
             strip_tags(addslashes($objectPOST->label)), //lire une propriété d'un objet PHP
             strip_tags($objectPOST->prix),
             ($objectPOST->id_categories != 0) ? strip_tags($objectPOST->id_categories) : 'NULL'// si l'id_categories est différent de 0, on l'utilise, sinon retourne NULL, d'où l'usage du %s pour l'id_categories dans $sql

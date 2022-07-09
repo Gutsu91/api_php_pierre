@@ -1,5 +1,6 @@
 <?php
-include 'config.php';
+//include 'config.php';
+include 'config-locale.php';
 include 'headers.php';
 session_start();
 
